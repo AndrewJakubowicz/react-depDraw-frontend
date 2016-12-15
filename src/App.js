@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import {CodeView} from './components/codeView';
-
+import {CodeViewWrapper, CodeFileTabs, CodeView} from './components/codeView';
+import {GraphViewWrapper} from './components/graphView';
 import './App.css'
 
 class Heading extends Component {
@@ -17,7 +17,7 @@ class Heading extends Component {
 
 function BodyWrapper(props) {
   return (
-    <div className="App-body">
+    <div className="App-body wrap">
       {props.children}
     </div>
   )
@@ -29,7 +29,11 @@ class App extends Component {
       <div className="App">
         <Heading/>
         <BodyWrapper>
-          <CodeView/>
+          <CodeViewWrapper className="left-pane">
+            <CodeFileTabs/>
+            <CodeView/>
+          </CodeViewWrapper>
+          <GraphViewWrapper className="right-pane"/>
         </BodyWrapper>
       </div>
     );

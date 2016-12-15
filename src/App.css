@@ -8,9 +8,24 @@
     border-bottom-style: inset;
 }
 
-div.App-body {
-    display: inline-block;
-    background-color: red;
+div.App-body, .App, #root {
+    background-color: #efefef;
     width: 100%;
-    height: inherit;
+    height: 100%;
+}
+
+.wrap {
+    width:100%;
+}
+
+.left-pane, .right-pane {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.right-pane {
+    width: 50%;
+    height: 100%;
+    background-color: #fdfdfd;
 }
