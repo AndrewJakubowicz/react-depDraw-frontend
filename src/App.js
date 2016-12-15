@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 
 import {CodeViewWrapper, CodeFileTabs, CodeView} from './components/codeView';
 import {GraphViewWrapper} from './components/graphView';
+import {NavBar} from './components/navBar';
 import './App.css'
 
 class Heading extends Component {
+  constructor(props){
+    super(props);
+    this.props = props;
+  }
+
   render() {
     return (
       <div className="App-header">
         <h2>MVP: Dependency navigator</h2>
+        {this.props.children}
       </div>
     )
   }
@@ -27,7 +34,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Heading/>
+        <Heading>
+          <NavBar/>
+        </Heading>
         <BodyWrapper>
           <CodeViewWrapper className="left-pane">
             <CodeFileTabs/>
