@@ -22,6 +22,7 @@ div.App-body, .App, #root {
     float: left;
     width: 50%;
     height: 100%;
+    background-color: #f6f6f6;
 }
 
 .right-pane {
