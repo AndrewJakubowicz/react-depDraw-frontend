@@ -18,6 +18,7 @@ export const getFileTokenEpic = action$ =>
                         }))
                     })
                     .map(a.receiveFileTokens)
+                    .takeUntil(action$.ofType(a.CANCEL_FETCH_FILE_TOKEN_DATA))
                     )
             .catch(err => {
                 console.error(`Error in getTextIdentifierTokensLocations request: `, err);
