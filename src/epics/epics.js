@@ -5,25 +5,36 @@ import { combineEpics } from 'redux-observable';
 import { parseEscaped } from '../util/jsonUtil';
 
 const { ajax } = Rx.Observable;
+const PORT = 8080
 
 // Deals with stream for gettingFileTokens
+
 export const getFileTokenEpic = action$ =>
-    action$.ofType(a.FETCH_FILE_TOKEN_DATA)
-            .mergeMap(action => 
-                ajax.getJSON(`http://localhost:8080/api/getTextIdentifierTokensLocations?filePath=${action.filePath}`)
+        action$.ofType(a.FETCH_FILE_TOKEN_DATA)
+            .mergeMap(action => {
+                const stream1 = ajax.getJSON(`http://localhost:${PORT}/api/getFileText?filePath=${action.filePath}`)
+                    .map(response => {
+                        console.log('text', response)
+                        return decodeURIComponent(response.text)
+                    })
+                    .map(a.receiveFileText);
+
+                const stream2 = ajax.getJSON(`http://localhost:${PORT}/api/getTextIdentifierTokensLocations?filePath=${action.filePath}`)
                     .map(tokenList => {
                         return tokenList.map(v => ({
                             ...v,
                             text: decodeURIComponent(v.text)
                         }))
                     })
-                    .map(a.receiveFileTokens)
-                    .takeUntil(action$.ofType(a.CANCEL_FETCH_FILE_TOKEN_DATA))
-                    )
+                    .map(a.receiveFileTokens);
+                return Rx.Observable.merge(stream1, stream2);
+            })
+            .takeUntil(action$.ofType(a.CANCEL_FETCH_FILE_TOKEN_DATA))
             .catch(err => {
                 console.error(`Error in getTextIdentifierTokensLocations request: `, err);
                 return Rx.Observable.empty();
-                });
+            })
+
 
 // Handles the init method.
 export const handleInit = action$ => 

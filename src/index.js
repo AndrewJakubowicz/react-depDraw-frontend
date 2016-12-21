@@ -31,39 +31,10 @@ ReactDOM.render(
 );
 
 
-// setTimeout(_ => {
-//   store.dispatch(a.fetchFileTokens('examples/ex3.ts'));
-// }, 3000);
+setTimeout(_ => {
+  store.dispatch(a.fetchFileTokens('examples/ex3.ts'));
+}, 2);
 
 setTimeout(_ => {
   store.dispatch(a.Init());
 }, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-setTimeout(_ => {
-  store.dispatch(a.receiveInit('file1'));
-}, 1);
-
-

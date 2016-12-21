@@ -23,7 +23,7 @@ export const getFileTokens = (state) => {
     return state.tokenList;
 }
 
-// Todo: Has to handle opening other files.
+// Todo: add file with another action.
 const filePathHeadingsReducer = (openFilesList = [], action) => {
     switch (action.type){
         case a.RECEIVE_INIT:
@@ -37,8 +37,22 @@ export const getFilePathHeadings = (state) => {
     return state.openFilesList
 }
 
+// Load in file text early.
+const fileTextReducer = (currentFileText = '', action) => {
+    switch (action.type){
+        case a.RECEIVE_FILE_TEXT:
+            return action.text;
+        // Don't need plain text if we have tokens.
+        case a.RECEIVE_FILE_TOKEN_DATA:
+            return '';
+        default:
+            return currentFileText;
+    }
+}
+
 
 export const rootReducer = combineReducers({
     tokenList: fileTokenReducer,
-    openFilesList: filePathHeadingsReducer
+    openFilesList: filePathHeadingsReducer,
+    currentFileText: fileTextReducer
 });
