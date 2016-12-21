@@ -9,10 +9,11 @@ export const fetchFileTokens = filePath => ({
     filePath
 });
 
-export const receiveFileTokens = tokenList => ({
+export const receiveFileTokens = tokenList => {
+    return {
     type: RECEIVE_FILE_TOKEN_DATA,
     tokenList
-});
+}};
 
 export const cancelFetchTokens = () => ({
     type: CANCEL_FETCH_FILE_TOKEN_DATA

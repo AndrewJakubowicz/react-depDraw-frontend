@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {CodeViewWrapper, CodeFileTabs, CodeView} from './components/codeView/codeView';
 import {GraphViewWrapper} from './components/graphView/graphView';
+import {CodeTokens} from './containers/codeTokens/codeTokens';
 import {NavBar} from './components/navBar';
 import './App.css'
 
@@ -40,7 +41,9 @@ class App extends Component {
         <BodyWrapper>
           <CodeViewWrapper className="left-pane">
             <CodeFileTabs/>
-            <CodeView/>
+            <CodeView>
+              <CodeTokens />
+            </CodeView>
           </CodeViewWrapper>
           <GraphViewWrapper className="right-pane"/>
         </BodyWrapper>

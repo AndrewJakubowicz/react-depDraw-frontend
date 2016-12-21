@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import createLogger from 'redux-logger';
-import * as ReactRedux from 'react-redux';
+import { Provider }from 'react-redux';
 import { createEpicMiddleware } from 'redux-observable';
 
 import { rootReducer } from './reducers/reducer';
@@ -24,9 +24,9 @@ let store = createStore(rootReducer,
             );
 
 ReactDOM.render(
-  <ReactRedux.Provider store={store}>
+  <Provider store={store}>
     <App />
-  </ReactRedux.Provider>,
+  </Provider>,
   document.getElementById('root')
 );
 

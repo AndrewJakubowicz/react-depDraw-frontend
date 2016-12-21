@@ -8,12 +8,14 @@ import * as Immutable from 'immutable';
 // State required in the app.
 // file.ts -> all the tokens.
 // map of file -> tokens
-const fileTokenReducer = (state = [], action) => {
+const fileTokenReducer = (state = { tokenList: [] }, action) => {
     switch (action.type){
         case a.RECEIVE_FILE_TOKEN_DATA:
-            return action.tokenList
+            return {
+                tokenList: action.tokenList
+            };
         default:
-            return []
+            return state;
     }
 }
 
