@@ -50,6 +50,10 @@ const fileTextReducer = (currentFileText = '', action) => {
     }
 }
 
+export const getText = (state) => {
+    return state.currentFileText;
+}
+
 
 export const rootReducer = combineReducers({
     tokenList: fileTokenReducer,

@@ -1,11 +1,14 @@
 import {connect} from 'react-redux';
 
+import {getText, getFileTokens} from '../../reducers/reducer';
+
 import * as comp from '../../components/codeTokens/codeTokens';
 
 
 const mapStateToProps = state => {
     return {
-        tokenList: state.tokenList
+        backupText: getText(state),
+        tokenList: getFileTokens(state)
     }
 }
 
