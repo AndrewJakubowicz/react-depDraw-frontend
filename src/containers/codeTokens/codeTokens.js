@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTokenClick: () => {console.log('you clicked me!')}
+        onTokenClick: (startOfToken) => {console.log('you clicked me!', startOfToken)}
     }
 }
 
