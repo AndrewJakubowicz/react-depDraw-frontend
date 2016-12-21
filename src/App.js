@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import {CodeViewWrapper, CodeFileTabs, CodeView} from './components/codeView/codeView';
+import {CodeViewWrapper, CodeView} from './components/codeView/codeView';
+import {CodeFileTabs} from './containers/codeFileTabs/codeFileTabs';
 import {GraphViewWrapper} from './components/graphView/graphView';
 import {CodeTokens} from './containers/codeTokens/codeTokens';
 import {NavBar} from './components/navBar';

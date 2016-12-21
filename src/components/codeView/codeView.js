@@ -11,17 +11,6 @@ export function CodeViewWrapper(props){
     )
 };
 
-export function CodeFileTabs(props){
-    return (
-        <div>
-            <button>filePath</button>
-            <button>filePath1</button>
-            <button>filePath2</button>
-            <button>filePath3</button>
-        </div>
-    )
-}
-
 export function CodeView(props){
     return (
         <pre className="code-text-box-padding">
