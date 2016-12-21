@@ -23,6 +23,7 @@ export const getFileTokens = (state) => {
     return state.tokenList;
 }
 
+// Todo: Has to handle opening other files.
 const filePathHeadingsReducer = (openFilesList = [], action) => {
     switch (action.type){
         case a.RECEIVE_INIT:

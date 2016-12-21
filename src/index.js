@@ -38,4 +38,32 @@ ReactDOM.render(
 setTimeout(_ => {
   store.dispatch(a.Init());
 }, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+setTimeout(_ => {
+  store.dispatch(a.receiveInit('file1'));
+}, 1);
+
 

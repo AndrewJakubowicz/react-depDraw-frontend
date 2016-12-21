@@ -1,5 +1,6 @@
 import React from 'react'
 
+import './codeFileTabs.css';
 
 export function CodeFileTabs(props){
     const listOfHeadings = props.headingsList;
@@ -11,6 +12,8 @@ export function CodeFileTabs(props){
         <span>Could not get file from server.</span>
 
     return (
-        <div>{headings}</div>
+        <div className='overflow-NavBar'>
+        {headings}
+        </div>
     )
 }

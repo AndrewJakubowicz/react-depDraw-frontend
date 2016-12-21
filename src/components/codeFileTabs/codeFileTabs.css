@@ -1,0 +1,7 @@
+
+.overflow-NavBar {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 40px;
+    white-space: nowrap;
+}
