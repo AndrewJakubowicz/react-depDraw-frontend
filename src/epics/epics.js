@@ -25,6 +25,15 @@ export const getFileTokenEpic = action$ =>
                 return Rx.Observable.empty();
                 })
 
+export const handleInit = action$ => 
+    action$.ofType(a.FETCH_INIT)
+        .mergeMap(action =>
+            ajax.getJSON(`http://localhost:8080/api/init`)
+            .map(decodeURIComponent)
+            .map(a.receiveInit)
+        )
+
 export const rootEpic = combineEpics(
-    getFileTokenEpic
+    getFileTokenEpic,
+    handleInit
 )

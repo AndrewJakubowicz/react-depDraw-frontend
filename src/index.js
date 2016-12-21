@@ -31,6 +31,11 @@ ReactDOM.render(
 );
 
 
+// setTimeout(_ => {
+//   store.dispatch(a.fetchFileTokens('examples/ex3.ts'));
+// }, 3000);
+
 setTimeout(_ => {
-  store.dispatch(a.fetchFileTokens('examples/ex3.ts'));
-}, 3000);
+  store.dispatch(a.Init());
+}, 1);
+

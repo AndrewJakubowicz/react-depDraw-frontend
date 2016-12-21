@@ -23,7 +23,21 @@ export const getFileTokens = (state) => {
     return state.tokenList;
 }
 
+const filePathHeadingsReducer = (openFilesList = [], action) => {
+    switch (action.type){
+        case a.RECEIVE_INIT:
+            return [...openFilesList, action.fileName]
+        default:
+            return openFilesList
+    }
+}
+
+export const getFilePathHeadings = (state) => {
+    return state.openFilesList
+}
+
 
 export const rootReducer = combineReducers({
-    tokenList: fileTokenReducer
+    tokenList: fileTokenReducer,
+    openFilesList: filePathHeadingsReducer
 });
