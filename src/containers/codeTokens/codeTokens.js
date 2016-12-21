@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getText, getFileTokens, getCurrentFile} from '../../reducers/reducer';
 
 import * as comp from '../../components/codeTokens/codeTokens';
-import {getTokenType} from '../../actions/actions';
+import {getTokenType, getTokenDependency, getTokenDependents} from '../../actions/actions';
 
 
 const mapStateToProps = state => {
@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTokenClick: (startOfToken, filePath) => {
-            dispatch(tokenClickLogic(startOfToken, filePath));
+            tokenClickLogic(startOfToken, filePath, dispatch);
         }
     }
 }
@@ -29,7 +29,8 @@ export const CodeTokens = connect(
 
 
 
-const tokenClickLogic = (startOfToken, filePath) => {
-    console.log('you clicked me and my position is', startOfToken, filePath);
-    return getTokenType(filePath, startOfToken.line, startOfToken.character);
+const tokenClickLogic = (startOfToken, filePath, dispatch) => {
+    dispatch(getTokenType(filePath, startOfToken.line, startOfToken.character));
+    dispatch(getTokenDependency(filePath, startOfToken.line, startOfToken.character));
+    dispatch(getTokenDependents(filePath, startOfToken.line, startOfToken.character));
 }

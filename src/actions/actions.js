@@ -78,3 +78,35 @@ export const receiveTokenType = (tokenType) => ({
 /**
  * END getTokenType method actions
  */
+
+
+export const GET_TOKEN_DEPENDENCY = 'GET_TOKEN_DEPENDENCY';
+export const RECEIVE_TOKEN_DEPENDENCY = 'RECEIVE_TOKEN_DEPENDENCY';
+
+export const getTokenDependency = (filePath, line, offset) => ({
+    type: GET_TOKEN_DEPENDENCY,
+    filePath,
+    line,
+    offset
+});
+
+export const receiveTokenDependency = (tokenDependencies) => ({
+    type: RECEIVE_TOKEN_DEPENDENCY,
+    tokenDependencies
+});
+
+
+export const GET_TOKEN_DEPENDENTS = 'GET_TOKEN_DEPENDENTS';
+export const RECEIVE_TOKEN_DEPENDENTS = 'RECEIVE_TOKEN_DEPENDENTS';
+
+export const getTokenDependents = (filePath, line, offset) => ({
+    type: GET_TOKEN_DEPENDENTS,
+    filePath,
+    line,
+    offset
+});
+
+export const receiveTokenDependents = (tokenDependents) => ({
+    type: RECEIVE_TOKEN_DEPENDENTS,
+    tokenDependents
+});

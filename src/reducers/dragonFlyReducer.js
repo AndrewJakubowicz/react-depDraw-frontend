@@ -18,8 +18,10 @@ export const getSelectedTokenType = state => {
 // TODO: fill out
 export const selectedTokenDependencies = (dependencies = [], action) => {
     switch(action.type){
+        case a.RECEIVE_TOKEN_DEPENDENCY:
+            return action.tokenDependencies
         default:
-        return dependencies;
+            return dependencies;
     }
 }
 
@@ -27,11 +29,13 @@ export const getSelectedTokenDependencies = state => {
     return state.dragonFlyData.tokenDependencies;
 }
 
-// TODO: fill out
+
 export const selectedTokenDependents = (dependents = [], action) => {
     switch(action.type){
+        case a.RECEIVE_TOKEN_DEPENDENTS:
+            return action.tokenDependents
         default:
-        return dependents;
+            return dependents;
     }
 }
 

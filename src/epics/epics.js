@@ -47,7 +47,7 @@ export const handleInit = action$ =>
 
 export const handleGetType = action$ =>
     action$.ofType(a.GET_TOKEN_TYPE)
-    .throttleTime(200)
+        .throttleTime(200)
         .mergeMap(action =>
             ajax.getJSON(`http://localhost:${PORT}/api/getTokenType?filePath=${action.filePath}&line=${action.line}&offset=${action.offset}`)
                 .filter(data => data.success)
@@ -58,8 +58,24 @@ export const handleGetType = action$ =>
             .map(a.receiveTokenType)
         );
 
+export const handleGetDeps = action$ =>
+    action$.ofType(a.GET_TOKEN_DEPENDENCY)
+        .mergeMap(action => 
+            ajax.getJSON(`http://localhost:${PORT}/api/getTokenDependencies?filePath=${action.filePath}&line=${action.line}&offset=${action.offset}`)
+                .map(a.receiveTokenDependency)
+        )
+
+export const handleGetDepnts = action$ =>
+    action$.ofType(a.GET_TOKEN_DEPENDENTS)
+        .mergeMap(action => 
+            ajax.getJSON(`http://localhost:${PORT}/api/getTokenDependents?filePath=${action.filePath}&line=${action.line}&offset=${action.offset}`)
+                .map(a.receiveTokenDependents)
+        )
+
 export const rootEpic = combineEpics(
     getFileTokenEpic,
     handleInit,
-    handleGetType
+    handleGetType,
+    handleGetDeps,
+    handleGetDepnts
 )
