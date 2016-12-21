@@ -16,7 +16,8 @@ export const getFileTokenEpic = action$ =>
                     .map(response => {
                         return decodeURIComponent(response.text)
                     })
-                    .map(a.receiveFileText);
+                    .map(a.receiveFileText)
+                    .takeUntil(action$.ofType(a.RECEIVE_FILE_TOKEN_DATA));
 
                 const stream2 = ajax.getJSON(`http://localhost:${PORT}/api/getTextIdentifierTokensLocations?filePath=${action.filePath}`)
                     .map(tokenList => {
