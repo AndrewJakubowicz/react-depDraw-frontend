@@ -48,7 +48,7 @@ class App extends Component {
             </CodeView>
           </CodeViewWrapper>
           <GraphViewWrapper className="right-pane">
-
+            <DragonFly/>
           </GraphViewWrapper>
         </BodyWrapper>
       </div>
