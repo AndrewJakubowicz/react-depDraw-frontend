@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Immutable from 'immutable';
 
 export const CodeTokens = ({ backupText, tokenList, onTokenClick }) => {
     // Allows quick load of text.

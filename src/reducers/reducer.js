@@ -1,11 +1,8 @@
-import * as Redux from 'redux';
-
 import * as a from '../actions/actions';
 
+import {dragonFlyData} from './dragonFlyReducer';
+
 import {combineReducers} from 'redux';
-
-import * as Immutable from 'immutable';
-
 
 // State required in the app.
 // file.ts -> all the tokens.
@@ -23,19 +20,33 @@ export const getFileTokens = (state) => {
     return state.tokenList;
 }
 
+
 // Todo: add file with another action.
-const filePathHeadingsReducer = (openFilesList = [], action) => {
+const filePathHeadingsReducer = ( filePathHeadings, action) => {
+    if (filePathHeadings === undefined) {
+        return { filesList: [], currentFile: '' }
+    }
+    const {filesList, currentFile} = filePathHeadings;
+
     switch (action.type){
         case a.RECEIVE_INIT:
-            return [...openFilesList, action.fileName]
+            return {
+                currentFile: action.fileName,
+                filesList: [...filesList, action.fileName]
+            }
         default:
-            return openFilesList
+            return filePathHeadings
     }
 }
 
 export const getFilePathHeadings = (state) => {
-    return state.openFilesList
+    return state.openFilesList.filesList;
 }
+
+export const getCurrentFile = state => {
+    return state.openFilesList.currentFile;
+}
+
 
 // Load in file text early.
 const fileTextReducer = (currentFileText = '', action) => {
@@ -58,5 +69,6 @@ export const getText = (state) => {
 export const rootReducer = combineReducers({
     tokenList: fileTokenReducer,
     openFilesList: filePathHeadingsReducer,
-    currentFileText: fileTextReducer
+    currentFileText: fileTextReducer,
+    dragonFlyData
 });

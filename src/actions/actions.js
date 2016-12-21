@@ -1,4 +1,7 @@
 
+
+export const CANCEL_ASYNC_OPERATIONS = 'CANCE_ASYNC_OPERATIONS';
+
 /**
  * START getTextIdentifierTokensLocations method actions
  */
@@ -43,7 +46,7 @@ export const Init = _ => ({
     type: FETCH_INIT
 });
 
-export const receiveInit = fileName => ({
+export const receiveCurrentFileName = fileName => ({
     type: RECEIVE_INIT,
     fileName
 })
@@ -52,7 +55,26 @@ export const receiveInit = fileName => ({
  * END init method actions
  */
 
+
 /**
  * START getTokenType method actions
  */
 
+export const GET_TOKEN_TYPE = 'GET_TOKEN_TYPE';
+export const RECEIVE_TOKEN_TYPE = 'RECEIVE_TOKEN_TYPE';
+
+export const getTokenType = (filePath, line, offset) => ({
+    type: GET_TOKEN_TYPE,
+    filePath,
+    line,
+    offset
+});
+
+export const receiveTokenType = (tokenType) => ({
+    type: RECEIVE_TOKEN_TYPE,
+    tokenType
+});
+
+/**
+ * END getTokenType method actions
+ */

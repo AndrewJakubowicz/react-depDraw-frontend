@@ -14,7 +14,6 @@ export const getFileTokenEpic = action$ =>
             .mergeMap(action => {
                 const stream1 = ajax.getJSON(`http://localhost:${PORT}/api/getFileText?filePath=${action.filePath}`)
                     .map(response => {
-                        console.log('text', response)
                         return decodeURIComponent(response.text)
                     })
                     .map(a.receiveFileText);
@@ -42,7 +41,7 @@ export const handleInit = action$ =>
         .mergeMap(action =>
             ajax.getJSON(`http://localhost:8080/api/init`)
             .map(decodeURIComponent)
-            .map(a.receiveInit)
+            .map(a.receiveCurrentFileName)
         )
 
 export const rootEpic = combineEpics(
