@@ -40,12 +40,26 @@ export const getFileTokenEpic = action$ =>
 export const handleInit = action$ => 
     action$.ofType(a.FETCH_INIT)
         .mergeMap(action =>
-            ajax.getJSON(`http://localhost:8080/api/init`)
+            ajax.getJSON(`http://localhost:${PORT}/api/init`)
             .map(decodeURIComponent)
             .map(a.receiveCurrentFileName)
         )
 
+export const handleGetType = action$ =>
+    action$.ofType(a.GET_TOKEN_TYPE)
+    .throttleTime(200)
+        .mergeMap(action =>
+            ajax.getJSON(`http://localhost:${PORT}/api/getTokenType?filePath=${action.filePath}&line=${action.line}&offset=${action.offset}`)
+                .filter(data => data.success)
+                .map(response => {
+                    console.log(response)
+                    return response.body
+                })
+            .map(a.receiveTokenType)
+        );
+
 export const rootEpic = combineEpics(
     getFileTokenEpic,
-    handleInit
+    handleInit,
+    handleGetType
 )

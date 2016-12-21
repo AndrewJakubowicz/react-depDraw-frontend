@@ -3,7 +3,7 @@ import * as a from '../actions/actions';
 import {combineReducers} from 'redux';
 
 export const selectedTokenTypeReducer = (selectedTokenType = {}, action) => {
-    switch (action){
+    switch (action.type){
         case a.RECEIVE_TOKEN_TYPE:
             return action.tokenType
         default:
@@ -17,7 +17,7 @@ export const getSelectedTokenType = state => {
 
 // TODO: fill out
 export const selectedTokenDependencies = (dependencies = [], action) => {
-    switch(action){
+    switch(action.type){
         default:
         return dependencies;
     }
@@ -29,7 +29,7 @@ export const getSelectedTokenDependencies = state => {
 
 // TODO: fill out
 export const selectedTokenDependents = (dependents = [], action) => {
-    switch(action){
+    switch(action.type){
         default:
         return dependents;
     }
