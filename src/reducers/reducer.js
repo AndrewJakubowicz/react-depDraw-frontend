@@ -17,4 +17,5 @@ const fileTokenReducer = (state = [], action) => {
     }
 }
 
-export const rootReducer = Redux.combineReducers(fileTokenReducer);
+// export const rootReducer = Redux.combineReducers(fileTokenReducer);
+export const rootReducer = fileTokenReducer;
