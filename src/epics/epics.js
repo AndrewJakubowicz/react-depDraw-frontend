@@ -1,10 +1,12 @@
 import * as Rx from 'rxjs';
 import * as a from '../actions/actions';
+import { combineEpics } from 'redux-observable';
 
 import { parseEscaped } from '../util/jsonUtil';
 
 const { ajax } = Rx.Observable;
 
+// Deals with stream for gettingFileTokens
 export const getFileTokenEpic = action$ =>
     action$.ofType(a.FETCH_FILE_TOKEN_DATA)
             .mergeMap(action => 
@@ -21,3 +23,7 @@ export const getFileTokenEpic = action$ =>
                 console.error(`Error in getTextIdentifierTokensLocations request: `, err);
                 return Rx.Observable.empty();
                 })
+
+export const rootEpic = combineEpics(
+    getFileTokenEpic
+)

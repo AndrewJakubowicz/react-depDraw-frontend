@@ -6,7 +6,7 @@ import { Provider }from 'react-redux';
 import { createEpicMiddleware } from 'redux-observable';
 
 import { rootReducer } from './reducers/reducer';
-import { getFileTokenEpic } from './epics/epics';
+import { rootEpic } from './epics/epics';
 import App from './App';
 import './index.css';
 
@@ -14,7 +14,7 @@ import './index.css';
 import * as a from './actions/actions';
 
 
-const epicMiddleware = createEpicMiddleware(getFileTokenEpic);
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
 // Create our store logger.
 const logger = createLogger();
