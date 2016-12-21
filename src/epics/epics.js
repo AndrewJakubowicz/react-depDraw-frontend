@@ -23,8 +23,9 @@ export const getFileTokenEpic = action$ =>
             .catch(err => {
                 console.error(`Error in getTextIdentifierTokensLocations request: `, err);
                 return Rx.Observable.empty();
-                })
+                });
 
+// Handles the init method.
 export const handleInit = action$ => 
     action$.ofType(a.FETCH_INIT)
         .mergeMap(action =>
