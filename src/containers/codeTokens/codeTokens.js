@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTokenClick: (startOfToken) => {console.log('you clicked me!', startOfToken)}
+        onTokenClick: tokenClickLogic
     }
 }
 
@@ -19,3 +19,8 @@ export const CodeTokens = connect(
     mapStateToProps,
     mapDispatchToProps
 )(comp.CodeTokens);
+
+
+const tokenClickLogic = startOfToken => {
+    console.log('you clicked me and my position is', startOfToken);
+}
