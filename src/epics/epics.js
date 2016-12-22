@@ -37,13 +37,23 @@ export const getFileTokenEpic = action$ =>
 
 
 // Handles the init method.
-export const handleInit = action$ => 
+const init = action$ => 
     action$.ofType(a.FETCH_INIT)
+        .throttleTime(1000)
         .mergeMap(action =>
             ajax.getJSON(`http://localhost:${PORT}/api/init`)
             .map(decodeURIComponent)
             .map(a.receiveCurrentFileName)
         )
+
+const handleChainInit = action$ =>
+    action$.ofType(a.RECEIVE_INIT)
+        .map(action => a.fetchFileTokens(action.fileName))
+
+const handleInit = combineEpics(
+    init,
+    handleChainInit
+)
 
 export const handleGetType = action$ =>
     action$.ofType(a.GET_TOKEN_TYPE)

@@ -41,7 +41,7 @@ export const DragonFly = ({highlightedTokenData, dependencies, dependents}) => {
 
 
     return <div>
-        <p>{tokenTypeDisplay(highlightedTokenData)}</p>
+        <div>{tokenTypeDisplay(highlightedTokenData)}</div>
         <h2>Dependencies</h2>
         <p>{dependencies ? (dependencyDisplay(dependencies)) : '...no dependencies to show here...'}</p>
         <h2>Dependents</h2>
