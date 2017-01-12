@@ -60,7 +60,12 @@ export const handleGetType = action$ =>
         .throttleTime(200)
         .mergeMap(action =>
             ajax.getJSON(`http://localhost:${PORT}/api/getTokenType?filePath=${action.filePath}&line=${action.line}&offset=${action.offset}`)
-                .filter(data => data.success)
+                .filter(data => {
+                    if (data && data.hasOwnProperty('success')){
+                        return data.success
+                    }
+                    return false;
+                    })
                 .map(response => {
                     console.log(response)
                     return response.body

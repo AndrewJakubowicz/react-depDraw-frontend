@@ -17,34 +17,37 @@ export const DragonFly = ({highlightedTokenData, dependencies, dependents}) => {
 
     const depDisplay = (tokenData) => {
         return (
-            <div>
-                <p>{`${decodeURIComponent(tokenData.displayString)} (${decodeURIComponent(tokenData.kind)})`}</p>
-            </div>
+            <li>{`${decodeURIComponent(tokenData.displayString)} (${decodeURIComponent(tokenData.kind)})`}</li>
         )
     }
 
     const depntDisplay = (tokenData) => {
         return (
-            <div>
-                <p>{`${decodeURIComponent(tokenData.text)} (${decodeURIComponent(tokenData.kind)})`}</p>
-            </div>
+            <li>{`${decodeURIComponent(tokenData.text)} (${decodeURIComponent(tokenData.kind)})`}</li>
         )
     }
 
     const dependencyDisplay = (depList) => {
-        return <div>{depList.map(t => t.body).map(depDisplay)}</div>
+        if (depList && depList.length > 0){
+            return <ul>{depList.map(t => t.body).map(depDisplay)}</ul>
+        }
+        return <p>No dependencies to display!</p>
     }
 
     const dependentDisplay = (depList) => {
-        return <div>{depList.map(depntDisplay)}</div>
+        if (depList && depList.length > 0){
+            return <ul>{depList.map(depntDisplay)}</ul>
+        }
+        return <p>No dependents to display!</p>
+        
     }
 
 
     return <div>
         <div>{tokenTypeDisplay(highlightedTokenData)}</div>
         <h2>Dependencies</h2>
-        <p>{dependencies ? (dependencyDisplay(dependencies)) : '...no dependencies to show here...'}</p>
+        <div>{dependencyDisplay(dependencies)}</div>
         <h2>Dependents</h2>
-        <p>{dependentDisplay(dependents)}</p>
+        <div>{dependentDisplay(dependents)}</div>
     </div>
 }
